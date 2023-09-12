@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "155653093962",
+    "project_id": "te-2023-2",
+    "storage_bucket": "te-2023-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155653093962:android:1539a7f2d922ea24bc44b3",
+        "android_client_info": {
+          "package_name": "com.iftm.te2023_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdpVRtGbzvUeizmXfrJpuCxmLrPZYczqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
