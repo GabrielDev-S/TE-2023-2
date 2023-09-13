@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { firebase } from '../../firebase/config'
+import { getAuth } from "firebase/auth"
 import styles from './estilo';
+
+const auth = getAuth();
 
 export default function RegistrationScreen({navigation}) {
     const [fullName, setFullName] = useState('')
@@ -16,9 +19,11 @@ export default function RegistrationScreen({navigation}) {
 
     const onRegisterPress = () => {
         if (password !== confirmPassword) {
-            alert("Passwords don't match.")
             return
         }
+        firebase
+            .auth()
+            .
         firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
