@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { firebase } from '../../firebase/config'
-import { getAuth } from "firebase/auth"
+import { firebase, auth, db } from '../../firebase/config'
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/compat/auth"
 import styles from './estilo';
 
-const auth = getAuth();
 
 export default function RegistrationScreen({navigation}) {
     const [fullName, setFullName] = useState('')
@@ -21,9 +20,8 @@ export default function RegistrationScreen({navigation}) {
         if (password !== confirmPassword) {
             return
         }
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
+        auth.
+        createUserWithEmailAndPassword(email, password)
             .then((response) => {
                 const uid = response.user.uid
                 const data = {
@@ -31,16 +29,16 @@ export default function RegistrationScreen({navigation}) {
                     email,
                     fullName,
                 };
-                const usersRef = firebase.firestore().collection('users')
-                usersRef
-                    .doc(uid)
-                    .set(data)
-                    .then(() => {
-                        navigation.navigate('Home', {user: data})
-                    })
-                    .catch((error) => {
-                        alert(error)
-                    });
+                // const usersRef = firebase.firestore().collection('users')
+                // usersRef
+                //     .doc(uid)
+                //     .set(data)
+                //     .then(() => {
+                //         navigation.navigate('Home', {user: data})
+                //     })
+                //     .catch((error) => {
+                //         alert(error)
+                //     });
             })
             .catch((error) => {
                 alert(error)
