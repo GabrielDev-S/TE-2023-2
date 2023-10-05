@@ -20,7 +20,7 @@ export default function App() {
         { user ? (
             // <Stack.Screen name="Principal" component={TelaPrincipal} />
           {/* Tela recebe usuario logado: TODO {props => <TelaPrincipal {...props} extraData={user} />} */}
-          // </Stack.Screen>
+          // </Stack.Screen>?
           ) : (
           <>
             <Stack.Screen name="Principal" component={TelaPrincipal} />

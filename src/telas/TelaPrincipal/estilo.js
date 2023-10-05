@@ -5,6 +5,9 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
+    title: {
+        alignSelf: 'center'
+    },
     input: {
         height: 48,
         borderRadius: 5,
@@ -15,5 +18,16 @@ export default StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         paddingLeft: 16
+    },
+    button: {
+        backgroundColor: 'red',
+        marginRight: 20,
+        marginTop: 20,
+        width: 40,
+        height: 30,
+        borderRadius: 5,
+        alignSelf: 'flex-end',
+        alignItems: "center",
+        justifyContent: 'center'
     }
 })

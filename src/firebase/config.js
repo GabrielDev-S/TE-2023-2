@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import 'firebase/compat/database';
 
 const firebaseConfig = {
     apiKey: "AIzaSyD8fBz-IyKA25KwNinm20UWWwPOuwu68Qc",
@@ -15,7 +16,7 @@ const firebaseConfig = {
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-const db = firebaseApp.firestore();
+const db = firebaseApp.database("https://te-2023-2-default-rtdb.firebaseio.com");
 const auth = firebase.auth();
 
 export { auth, db };
