@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { TextInputMask } from 'react-native-masked-text'
 import styles from './estilo'
 
 const CadastroLancamentos = () => {
@@ -18,28 +19,41 @@ const CadastroLancamentos = () => {
         <View style={styles.container}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
-                keyboardShouldPersistTaps="always">
-                <TextInput
+                keyboardShouldPersistTaps='never'>
+                <TextInputMask
                     style={styles.input}
-                    placeholder="Data"
+                    type={'datetime'}
+                    options={{
+                      format: 'DD/MM/YYYY'
+                    }}
+                    keyboardType='numeric'
+                    placeholder='DD/MM/YYYY'
                     value={data}
                     onChangeText={setData}
                 />
-                <TextInput
+                <TextInputMask
                     style={styles.input}
-                    placeholder="Valor"
+                    type='money'
+                    options={{
+                      precision: 2,
+                      separator: ',',
+                      delimiter: '.',
+                      unit: 'R$'
+                    }}
+                    keyboardType='numeric'
+                    placeholder='Valor'
                     value={valor}
                     onChangeText={setValor}
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder="Tipo (Débito ou Crédito)"
+                    placeholder='Tipo (Débito ou Crédito)'
                     value={tipo}
                     onChangeText={setTipo}
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder="Descrição"
+                    placeholder='Descrição'
                     value={descricao}
                     onChangeText={setDescricao}
                 />
