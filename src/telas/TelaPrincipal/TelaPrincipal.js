@@ -13,6 +13,10 @@ export default function HomeScreen({navigation}) {
         navigation.navigate('Login')
     }
 
+    const onEntriesPress = () => {
+        navigation.navigate('Lancamento')
+    }
+
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
@@ -32,7 +36,15 @@ export default function HomeScreen({navigation}) {
                     onPress={() => onLoginPress()}>
                     <Text style={styles.buttonTitle}>Já tenho conta</Text>
                 </TouchableOpacity>
+                <View>
+                    <TouchableOpacity
+                        style={styles.buttonEntries}
+                        onPress={() => onEntriesPress()}>
+                        <Text style={styles.buttonTitle}>Lançamentos (botão temporário)</Text>
+                    </TouchableOpacity>
+                </View>
             </KeyboardAwareScrollView>
         </View>
+
     )
 }
