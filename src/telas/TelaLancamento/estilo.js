@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
         marginRight: 30,
         paddingLeft: 16
     },
+    labelInput: {
+        marginTop: 10,
+        marginLeft: 30
+    },
     button: {
         backgroundColor: '#788eec',
         marginLeft: 30,
@@ -32,6 +36,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold'
     },
+    picker: {
+        height: 48,
+        // overflow: 'hidden',
+        
+    }
 });
 
 export default styles

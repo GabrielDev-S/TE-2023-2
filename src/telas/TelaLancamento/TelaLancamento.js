@@ -2,12 +2,17 @@ import React, { useState } from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextInputMask } from 'react-native-masked-text'
+// import { Picker } from '@react-native-picker/picker'
 import styles from './estilo'
+import PickerTypeEntrie from './Picker'
 
 const CadastroLancamentos = () => {
     const [data, setData] = useState('');
     const [valor, setValor] = useState('');
-    const [tipo, setTipo] = useState('');
+    // const [tipo] = useState(
+    //   ['Despesa', 'Receita']
+    // );
+    // const [tipoSelecionado, setTipoSelecionado] = useState([]);
     const [descricao, setDescricao] = useState('');
 
     const handleCadastro = () => {
@@ -20,6 +25,7 @@ const CadastroLancamentos = () => {
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps='never'>
+                <Text style={styles.labelInput}>Data</Text>
                 <TextInputMask
                     style={styles.input}
                     type={'datetime'}
@@ -31,6 +37,7 @@ const CadastroLancamentos = () => {
                     value={data}
                     onChangeText={setData}
                 />
+                <Text style={styles.labelInput}>Valor</Text>
                 <TextInputMask
                     style={styles.input}
                     type='money'
@@ -45,12 +52,9 @@ const CadastroLancamentos = () => {
                     value={valor}
                     onChangeText={setValor}
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholder='Tipo (Débito ou Crédito)'
-                    value={tipo}
-                    onChangeText={setTipo}
-                />
+                <Text style={styles.labelInput}>Tipo Lançamento</Text>
+                <PickerTypeEntrie/>
+                <Text style={styles.labelInput}>Descrição</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='Descrição'
