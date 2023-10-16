@@ -2,19 +2,18 @@ import React, { useState } from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextInputMask } from 'react-native-masked-text'
-// import { Picker } from '@react-native-picker/picker'
+import RNPickerSelect from 'react-native-picker-select'
 import styles from './estilo'
-import PickerTypeEntrie from './Picker'
 
 const CadastroLancamentos = () => {
     const [data, setData] = useState('');
     const [valor, setValor] = useState('');
-    // const [tipo] = useState(
-    //   ['Despesa', 'Receita']
-    // );
-    // const [tipoSelecionado, setTipoSelecionado] = useState([]);
     const [descricao, setDescricao] = useState('');
-
+    const [tipo, setTipo] = useState('');
+    const selectTipo = [
+        { label: 'Despesa', value: 'despesa'},
+        { label: 'Receita', value: 'receita'}
+    ];
     const handleCadastro = () => {
       // Aqui você pode realizar as ações necessárias para salvar o lançamento contábil
       console.log('Lançamento cadastrado:', data, valor, tipo, descricao);
@@ -53,7 +52,14 @@ const CadastroLancamentos = () => {
                     onChangeText={setValor}
                 />
                 <Text style={styles.labelInput}>Tipo Lançamento</Text>
-                <PickerTypeEntrie/>
+                <View style={styles.picker}>
+                    <RNPickerSelect
+                        placeholder={ {label: 'Selecione uma opção...', value: null }}
+                        items={selectTipo}
+                        onValueChange={(value) => setTipo(value)}
+                        value={tipo}
+                    />
+                </View>
                 <Text style={styles.labelInput}>Descrição</Text>
                 <TextInput
                     style={styles.input}
