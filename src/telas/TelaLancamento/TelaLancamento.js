@@ -5,7 +5,7 @@ import { TextInputMask } from 'react-native-masked-text'
 import RNPickerSelect from 'react-native-picker-select'
 import styles from './estilo'
 
-const CadastroLancamentos = () => {
+export default function CadastroLancamentos(){
     const [data, setData] = useState('');
     const [valor, setValor] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -51,15 +51,15 @@ const CadastroLancamentos = () => {
                     value={valor}
                     onChangeText={setValor}
                 />
-                <Text style={styles.labelInput}>Tipo Lançamento</Text>
-                <View style={styles.picker}>
+                {/* <Text style={styles.labelInput}>Tipo Lançamento</Text> */}
+                {/* <View style={styles.picker}>
                     <RNPickerSelect
                         placeholder={ {label: 'Selecione uma opção...', value: null }}
                         items={selectTipo}
                         onValueChange={(value) => setTipo(value)}
                         value={tipo}
                     />
-                </View>
+                </View> */}
                 <Text style={styles.labelInput}>Descrição</Text>
                 <TextInput
                     style={styles.input}
@@ -80,6 +80,4 @@ const CadastroLancamentos = () => {
             </KeyboardAwareScrollView>
         </View>
     );
-  };
-
-export default CadastroLancamentos;
+};
