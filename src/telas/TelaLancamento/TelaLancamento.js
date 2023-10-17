@@ -2,18 +2,14 @@ import React, { useState } from 'react'
 import { View, TextInput, Text, TouchableOpacity } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextInputMask } from 'react-native-masked-text'
-import RNPickerSelect from 'react-native-picker-select'
+import { Picker } from '@react-native-picker/picker'
 import styles from './estilo'
 
 export default function CadastroLancamentos(){
     const [data, setData] = useState('');
     const [valor, setValor] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [tipo, setTipo] = useState('');
-    const selectTipo = [
-        { label: 'Despesa', value: 'despesa'},
-        { label: 'Receita', value: 'receita'}
-    ];
+    const [tipo, setTipo] = useState('despesa');
     const handleCadastro = () => {
       // Aqui você pode realizar as ações necessárias para salvar o lançamento contábil
       console.log('Lançamento cadastrado:', data, valor, tipo, descricao);
@@ -51,15 +47,16 @@ export default function CadastroLancamentos(){
                     value={valor}
                     onChangeText={setValor}
                 />
-                {/* <Text style={styles.labelInput}>Tipo Lançamento</Text> */}
-                {/* <View style={styles.picker}>
-                    <RNPickerSelect
-                        placeholder={ {label: 'Selecione uma opção...', value: null }}
-                        items={selectTipo}
-                        onValueChange={(value) => setTipo(value)}
-                        value={tipo}
-                    />
-                </View> */}
+                <Text style={styles.labelInput}>Tipo Lançamento</Text>
+                <View style={styles.picker}>
+                    <Picker
+                        selectedValue={tipo}
+                        onValueChange={(itemValue) => setTipo(itemValue)}
+                    >
+                        <Picker.Item label="Despesa" value="despesa" />
+                        <Picker.Item label="Receita" value="receita" />
+                    </Picker>
+                </View>
                 <Text style={styles.labelInput}>Descrição</Text>
                 <TextInput
                     style={styles.input}
