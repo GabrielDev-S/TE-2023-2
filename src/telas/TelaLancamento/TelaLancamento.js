@@ -58,7 +58,9 @@ export default function CadastroLancamentos(){
                 <TouchableOpacity
                     onPress={() => changeModalVisibility(true)}
                 >
-                    <Text style={styles.input}>{tipo}</Text>
+                    <View>
+                        <Text style={styles.comboBox}>{tipo}</Text>
+                    </View>
                 </TouchableOpacity>
                 <Modal
                     transparent={true}

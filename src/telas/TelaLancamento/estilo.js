@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 48,
+        width: '85%',
         borderRadius: 5,
         overflow: 'hidden',
         backgroundColor: 'white',
@@ -35,6 +36,19 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold'
+    },
+    comboBox: {
+        height: 48,
+        width: '85%',
+        borderRadius: 5,
+        overflow: 'hidden',
+        backgroundColor: 'white',
+        marginTop: 10,
+        marginBottom: 10,
+        marginLeft: 30,
+        marginRight: 30,
+        paddingLeft: 16,
+        paddingTop: 15
     }
 });
 
