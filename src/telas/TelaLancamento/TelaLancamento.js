@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
-import { View, TextInput, Text, TouchableOpacity } from 'react-native'
+import { View, TextInput, Text, TouchableOpacity, Modal } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextInputMask } from 'react-native-masked-text'
-import { Picker } from '@react-native-picker/picker'
 import styles from './estilo'
+import { ModalPicker } from './Modal/ModalPicker'
 
 export default function CadastroLancamentos(){
     const [data, setData] = useState('');
     const [valor, setValor] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [tipo, setTipo] = useState('despesa');
+    const [tipo, setchooseTipo] = useState('Selecione um tipo ...');
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const changeModalVisibility = (bool) => {
+        setIsModalVisible(bool)
+    };
+    const setTipo = (option) => {
+        setchooseTipo(option)
+    };
     const handleCadastro = () => {
       // Aqui você pode realizar as ações necessárias para salvar o lançamento contábil
       console.log('Lançamento cadastrado:', data, valor, tipo, descricao);
@@ -47,16 +54,23 @@ export default function CadastroLancamentos(){
                     value={valor}
                     onChangeText={setValor}
                 />
-                <Text style={styles.labelInput}>Tipo Lançamento</Text>
-                <View style={styles.picker}>
-                    <Picker
-                        selectedValue={tipo}
-                        onValueChange={(itemValue) => setTipo(itemValue)}
-                    >
-                        <Picker.Item label="Despesa" value="despesa" />
-                        <Picker.Item label="Receita" value="receita" />
-                    </Picker>
-                </View>
+                <Text style={styles.labelInput}>Tipo</Text>
+                <TouchableOpacity
+                    onPress={() => changeModalVisibility(true)}
+                >
+                    <Text style={styles.input}>{tipo}</Text>
+                </TouchableOpacity>
+                <Modal
+                    transparent={true}
+                    animationType={'fade'}
+                    visible={isModalVisible}
+                    nRequestClose={() => changeModalVisibility(false)}
+                >
+                    <ModalPicker
+                        changeModalVisibility={changeModalVisibility}
+                        setTipo={setTipo}
+                    />
+                </Modal>
                 <Text style={styles.labelInput}>Descrição</Text>
                 <TextInput
                     style={styles.input}
